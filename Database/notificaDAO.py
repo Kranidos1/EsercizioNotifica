@@ -76,8 +76,8 @@ class notificaDAO :
         oggetto = dictRisposta['messaggioRicevuto']['mes_Oggetto']
         idPadre = dictRisposta['messaggioRicevuto']['mes_id']
         messaggio = dictRisposta['message']
-        
-        query = "INSERT INTO message (mes_datacreazione ,mes_userCreator ,mes_idPadre ,mes_Oggetto ,mes_Messaggio) VALUES (NOW() ,%s ,%s ,%s ,%s)"
+        #2 indica che il tipo messaggio e' una risposta
+        query = "INSERT INTO message (mes_datacreazione ,mes_tipomessaggio,mes_userCreator ,mes_idPadre ,mes_Oggetto ,mes_Messaggio) VALUES (NOW() ,2 ,%s ,%s ,%s ,%s)"
         cursor.execute(query ,[creatore ,idPadre ,oggetto ,messaggio])
         
         self.conn.connection.commit()

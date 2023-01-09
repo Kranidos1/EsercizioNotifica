@@ -1,7 +1,9 @@
 IMPORTANTE :
 
 E' necessario che i campi da creare siano tra parentesi quadre.
-Nel caso in cui non ci siano campi da creare in risposta la notifica non viene creata.
+Nel caso in cui non ci siano campi da creare in mes_bottoni la notifica non viene creata.
+
+mes_tipoAlert = 1 indica che e' possibile rimandare la notifica
 
 Di seguito un esempio dei campi nel database per creare tutti i possibili oggetti nel campo risposta e i 3 bottoni 
 principali : Rimanda ,Ok ,Rispondi
@@ -30,6 +32,7 @@ Arriveranno al frame sottoforma di dizionario {"nomeColonna" : valore ,...}
 
 I valori inseriti dall'utente ,nel caso di un eventuale risposta ,saranno salvati in mes_Messaggio come str([{'idObj' : idDB ,"value" : value},{'idObj' : idDB2 ,"value" : value2}])
 idDB e' l'id dell'oggetto passato dal database.
+Inoltre il mes_tipomessaggio sarà uguale a 2 ,dove 2 indica che e' una risposta.
 
 Di seguito un esempio funzionante dei campi nel database per creare 2 field e i 3 bottoni 
 principali : Rimanda ,Ok ,Rispondi

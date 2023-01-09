@@ -215,7 +215,6 @@ class PersonalizedDialog(wx.Dialog):
             
         #fine bottoni
         
-    #con la nuova struttura i bottoni vengono bindati qui ,senza passare riferimento frame
 
 
         

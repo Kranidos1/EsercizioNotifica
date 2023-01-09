@@ -11,7 +11,7 @@ def gestioneCreazioni(dialogRef ,txtObject ,parent ,box ,idDict):
     #crea un nuovo id
     id = wx.NewId()
     
-    #salva il tipo di oggetto ,l'id per utilizzarlo se necessario ,l'id per salvare nel database sottoforma di {'idDB':idDB ,'value':value} dove idDB e' l'id dell'oggeto nel messaggio ricevuto
+    #salva il tipo di oggetto ,l'id nel frame ,l'idDB per salvare i valori nel database sottoforma di {'idDB':idDB ,'value':value} dove idDB e' l'id dell'oggeto nel messaggio ricevuto
     idDict.append({'obj':txtObject['obj'] ,"id":id ,"idDB" :txtObject['id']})
     
     if txtObject['obj'] == 'testo':
