@@ -63,26 +63,28 @@ class PersonalizedDialog(wx.Dialog):
         #aggiungi oggetto
         labelMessaggio = wx.StaticText(panel ,-1 ,label="Messaggio :  ")
         
-        fieldMessaggio = wx.TextCtrl(panel ,size=(455,100) ,value=msg['mes_Messaggio'] ,style = wx.TE_MULTILINE | wx.TE_READONLY)
+        self.fieldMessaggio = wx.TextCtrl(panel ,size=(455,100) ,value=msg['mes_Messaggio'] ,style = wx.TE_MULTILINE | wx.TE_READONLY)
 
         boxMessaggio.Add(labelOggetto ,0 ,wx.LEFT | wx.RIGHT | wx.TOP ,border = 10)
         boxMessaggio.Add(labelMessaggio ,0 ,wx.LEFT | wx.RIGHT | wx.TOP ,border = 10)
-        boxMessaggio.Add(fieldMessaggio ,0 ,wx.LEFT,border = 10)
+        boxMessaggio.Add(self.fieldMessaggio ,0 ,wx.LEFT,border = 10)
         
         boxMessaggioRicevuto.Add(boxMittenteData)
         boxMessaggioRicevuto.Add(boxMessaggio)
         
-        panel.SetSizerAndFit(boxMessaggioRicevuto)
-        panel.SetPosition((0,0))
-        panel.SetSize(500,200)
         #fine messaggio ricevuto
         
         #inizio risposta
-        if(msg['mes_campiRisposta'] != ''):
-            
+        if(msg['mes_campiRisposta'] != None):
+
+            panel.SetSizerAndFit(boxMessaggioRicevuto)
+            panel.SetPosition((0,0))
+            panel.SetSize(500,200)
+        
             self.creaPannelloRisposta()
         #fine risposta
-        
+            #setto la fine di pannello risposta
+            self.isRisposta = -1
         #inizio pannello bottoni
             self.creaPannelloBottoni()
         #fine pannello bottoni
@@ -92,12 +94,18 @@ class PersonalizedDialog(wx.Dialog):
 
         #se manca risposta crea solo bottoni
         else:
-            
+    
+            panel.SetSizerAndFit(boxMessaggioRicevuto)
+            panel.SetPosition((0,0))
+            panel.SetSize(500,300)
+        
+            #dico alla funzione creaPannelloBottoni che il fieldMessaggio ,dato che manca il pannello di risposta ,sarà piu grande
+            self.isRisposta = -2
         #inizio pannello bottoni    
             self.creaPannelloBottoni()
         #fine pannello bottoni
-        
-            self.SetSize(500,299)
+            self.fieldMessaggio.SetSize((455,150))
+            self.SetSize(500,370)
         
         #print(self.idDict)
 
@@ -170,9 +178,13 @@ class PersonalizedDialog(wx.Dialog):
         #fine risposta
         
     def creaPannelloBottoni(self):
-        self.isRisposta = -1
+        
+        pos=(0,550)
+        if(self.isRisposta == -2):
+            pos = (0,271)
+            
         #inizio bottoni
-        panel4 = wx.lib.scrolledpanel.ScrolledPanel(self ,-1 ,size=(500,60) ,pos=(0,550) ,style=wx.SIMPLE_BORDER)
+        panel4 = wx.lib.scrolledpanel.ScrolledPanel(self ,-1 ,size=(500,60) ,pos=pos ,style=wx.SIMPLE_BORDER)
         panel4.SetFont(self.font)
             
         boxBottoni = wx.BoxSizer(wx.HORIZONTAL)

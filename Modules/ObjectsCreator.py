@@ -35,12 +35,12 @@ def gestioneCreazioni(dialogRef ,txtObject ,parent ,box ,idDict):
         creaCheckBoxList(txtObject['label'] ,parent ,id ,box)       
     
     #bottone in pannello risposta (questo viene centralizzato nel pannello risposta)
-    if txtObject['obj'] == 'bottone' and dialogRef.isRisposta != -1:
+    if txtObject['obj'] == 'bottone' and dialogRef.isRisposta == 1:
         
         creaBottoneRisposta(dialogRef ,txtObject['label'] ,parent ,id ,box ,txtObject['function'])
         
     #bottone in pannello bottoni
-    if txtObject['obj'] == 'bottone' and dialogRef.isRisposta == -1:
+    if txtObject['obj'] == 'bottone' and dialogRef.isRisposta != 1:
         
         creaBottone(dialogRef  ,txtObject['label'] ,parent ,id ,box ,txtObject['function'])
 

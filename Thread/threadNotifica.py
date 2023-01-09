@@ -28,7 +28,7 @@ class threadNotifica :
             
         #controlla notifiche presenti per un determinato user
         notifiche = self.notifica.getNotifiche("Test")
-
+        
         try:
 
             #controlla se in lista ci sono effettivamente delle notifiche ,che nel caso verranno visualizzate una dopo l'altra
